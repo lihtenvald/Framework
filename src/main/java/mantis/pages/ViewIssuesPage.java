@@ -13,15 +13,14 @@ public class ViewIssuesPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
+    @FindBy(css = "#buglist tbody tr")
+    private List<WebElement>issues;
     public ViewIssuesPage(WebDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(30, 500));
 
         PageFactory.initElements(driver, this);
     }
-
-    @FindBy(css = "#buglist tbody tr")
-    private List<WebElement>issues;
 
     public int countIssues(){
         return issues.size();
