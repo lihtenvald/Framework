@@ -14,17 +14,30 @@ public class ViewIssuesPage {
     private final WebDriverWait wait;
 
     @FindBy(css = "#buglist tbody tr")
-    private List<WebElement>issues;
-    public ViewIssuesPage(WebDriver driver){
+    private List<WebElement> issues;
+
+    @FindBy(xpath = "//table[@id='buglist']//tr[1]//i[@class='fa fa-pencil bigger-130 padding-2 grey']")
+    private WebElement editIssueButton;
+    @FindBy(xpath = "//table[@id='buglist']//tr[1]//td[@class='column-summary']")
+    private WebElement summaryIssue;
+
+
+    public ViewIssuesPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(30, 500));
 
         PageFactory.initElements(driver, this);
     }
 
-    public int countIssues(){
+    public int countIssues() {
         return issues.size();
     }
 
+    public void editIssue() {
+        editIssueButton.click();
+    }
 
+    public String getNewSummaryIssue() {
+        return summaryIssue.getText();
+    }
 }

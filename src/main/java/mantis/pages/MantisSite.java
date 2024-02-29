@@ -38,9 +38,11 @@ public class MantisSite {
         return mainPage;
     }
 
-    public ViewIssuesPage getViewIssuesPage() {return viewIssuesPage;}
-    public ReportIssuesPage getReportIssuesPage(){return reportIssuesPage;};
+    public ViewIssuesPage getViewIssuesPage() {
+        return viewIssuesPage;
+    }
 
-
-
+    public ReportIssuesPage getReportIssuesPage() {
+        return reportIssuesPage;
+    }
 }

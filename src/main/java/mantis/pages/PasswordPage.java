@@ -22,7 +22,6 @@ public class PasswordPage {
 
         PageFactory.initElements(driver, this);
     }
-
     public void login(String password) {
         passwordField.sendKeys(password);
         passwordField.sendKeys(Keys.ENTER);

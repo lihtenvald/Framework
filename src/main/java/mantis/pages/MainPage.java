@@ -18,12 +18,12 @@ public class MainPage {
     @FindBy(css = "a[href='/mantisbt/view_all_bug_page.php']")
     private WebElement viewIssuesPageButton;
 
-    @FindBy(css="a[href='/mantisbt/bug_report_page.php']")
+    @FindBy(css = "a[href='/mantisbt/bug_report_page.php']")
     private WebElement reportIssuesPageButton;
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds (30, 500));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30, 500));
         PageFactory.initElements(driver, this);
     }
 
@@ -34,5 +34,8 @@ public class MainPage {
     public void goToViewIssuesPage() {
         viewIssuesPageButton.click();
     }
-    public void goToReportIssuesPage(){reportIssuesPageButton.click();}
+
+    public void goToReportIssuesPage() {
+        reportIssuesPageButton.click();
+    }
 }
