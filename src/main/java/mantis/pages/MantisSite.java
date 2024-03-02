@@ -18,7 +18,6 @@ public class MantisSite {
         mainPage = new MainPage(driver);
         viewIssuesPage = new ViewIssuesPage(driver);
         reportIssuesPage = new ReportIssuesPage(driver);
-
     }
 
     public void login(String login, String password) {

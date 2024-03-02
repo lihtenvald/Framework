@@ -33,16 +33,9 @@ public class ReportIssuesPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void createSummary(String summary) {
-        summaryField.click();
+    public void createIssueWithRequiredFields(String summary, String description) {
         summaryField.sendKeys(summary);
-    }
-
-    public void createDescription(String description) {
         descriptionFiled.sendKeys(description);
-    }
-
-    public void clickSubmitIssueButton() {
         submitIssueButton.click();
     }
 
@@ -50,11 +43,11 @@ public class ReportIssuesPage {
         updateInformationButton.click();
     }
 
-    public void clickDelete() {
+    public void clickDeleteButton() {
         DeleteButton.click();
     }
 
-    public void clickDeleteIssues() {
+    public void clickDeleteIssuesButton() {
         DeleteIssuesButton.click();
     }
 }

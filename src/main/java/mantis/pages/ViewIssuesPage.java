@@ -21,7 +21,6 @@ public class ViewIssuesPage {
     @FindBy(xpath = "//table[@id='buglist']//tr[1]//td[@class='column-summary']")
     private WebElement summaryIssue;
 
-
     public ViewIssuesPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(30, 500));

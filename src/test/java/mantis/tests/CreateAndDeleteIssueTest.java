@@ -5,6 +5,9 @@ import mantis.pages.ReportIssuesPage;
 import mantis.pages.ViewIssuesPage;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CreateAndDeleteIssueTest extends BaseTest {
     private MantisSite mantisSite;
@@ -20,20 +23,18 @@ public class CreateAndDeleteIssueTest extends BaseTest {
 
         mantisSite.login("admin", "admin20");
         mantisSite.getMainPage().goToReportIssuesPage();
-        reportIssuesPage.createSummary("Summary 2024-02-29");
-        reportIssuesPage.createDescription("Text");
-        reportIssuesPage.clickSubmitIssueButton();
+        reportIssuesPage.createIssueWithRequiredFields("Summary 2024-03-3", "Text");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-        Thread.sleep(3000);
+        String newIssue = viewIssuesPage.getNewSummaryIssue();
+        softAssert.assertThat(newIssue).isEqualTo("Summary 2024-03-3");
         String currentUrl = driver.getCurrentUrl();
         softAssert.assertThat(currentUrl).isEqualTo("https://academ-it.ru/mantisbt/view_all_bug_page.php");
-        String newIssue = viewIssuesPage.getNewSummaryIssue();
-        softAssert.assertThat(newIssue).isEqualTo("Summary 2024-02-29");
 
         viewIssuesPage.editIssue();
         reportIssuesPage.clickUpdateInformationButton();
-        reportIssuesPage.clickDelete();
-        reportIssuesPage.clickDeleteIssues();
+        reportIssuesPage.clickDeleteButton();
+        reportIssuesPage.clickDeleteIssuesButton();
 
         String lastIssue = viewIssuesPage.getNewSummaryIssue();
         softAssert.assertThat(lastIssue).isNotEqualTo("Summary 2024-02-29");
